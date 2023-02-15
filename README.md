@@ -8,3 +8,6 @@ Then analyse all those pictures and give a rate. That's all for the first missio
 cmake -S /home/snellium/Documents/JH/daemon/ -DMODULES="all" -DENABLE_UEYE="off" -DENABLE_LICENCE_CHECK="off" -DCMAKE_CUDA_FLAGS="--compiler-bindir=/usr/bin/g++-9" -B /home/snellium/Documents/JH/daemon-compiled
 
 make -j
+
+
+sudo ./target/snelliumd --http-listening-addr 127.0.0.1 --http-listening-port 8080 --virtual-camera 400x400
