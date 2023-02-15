@@ -1,0 +1,39 @@
+### ISSUES
+
+#Code
+class camera_param_trigger_entry_source_serializer
+    : public serialization::json::load_base<camera::params::TriggerSourceEntry>,
+      public serialization::json::save_base<
+          camera::params::TriggerSourceEntry> {
+public:
+    camera_param_trigger_entry_source_serializer() = default;
+
+protected:
+    virtual void on_load_from_json(camera::params::EnumerationValueEntry& value,
+                                   nlohmann::json const& jvalue) const ;
+    // virtual void on_save_as_json(camera::params::TriggerEntrySource const&
+    // value,
+    //                              nlohmann::json& jvalue) const override;
+};
+
+class camera_param_trigger_description_entry_serializer
+    : public serialization::json::save_base<
+          camera::params::EnumerationDescriptionEntry> {
+public:
+    camera_param_trigger_description_entry_serializer() = default;
+
+private:
+    virtual void
+    on_save_as_json(camera::params::EnumerationDescriptionEntry const& value,
+                    nlohmann::json& jvalue) const override;
+
+    camera_param_access_mode_serializer _mode_serializer;
+    serialization::boolean_serializer<bool> _bool_serializer;
+    camera_param_trigger_entry_source_serializer _source_serializer;
+    // serialization::string_serializer<std::string> _string_serializer;
+};
+
+#Error
+
+cannot declare field ‘core::camera_param_trigger_description_entry_serializer::_source_serializer’ to be of abstract type ‘core::camera_param_trigger_entry_source_serializer’
+
